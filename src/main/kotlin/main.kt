@@ -1,4 +1,5 @@
 import kotlinx.coroutines.*
+import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 fun main(args: Array<String>) {
@@ -7,7 +8,7 @@ fun main(args: Array<String>) {
 }
 
 suspend fun printDelayed(message: String) {
-    delay(3000)
+    delay(1000)
     println(message)
 }
 
@@ -59,4 +60,5 @@ fun exampleLaunchCoroutineScope() = runBlocking {
     }
     println("three - from thread ${Thread.currentThread().name}")
 
+    (customDispatcher.executor as ExecutorService).shutdown()
 }
